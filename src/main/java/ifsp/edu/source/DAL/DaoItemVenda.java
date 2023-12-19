@@ -22,15 +22,8 @@ public class DaoItemVenda {
 	        ps.setInt(2, livro.getId());
 	        ps.setInt(3, quantidade);
 	        
-
 	        int rowsAffected = ps.executeUpdate();
-	        
-	        
-	        
-	        // Verifique se alguma linha foi afetada (inserida)
 	        return rowsAffected > 0;
-	        
-	        
 
 	    } catch (SQLException ex) {
 	        ex.printStackTrace();
@@ -174,12 +167,12 @@ public class DaoItemVenda {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 int count = rs.getInt(1);
-                return count > 0; // Retorna true se o livro existe, false caso contrário
+                return count > 0; 
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return false; // Em caso de erro ou se não houver correspondência
+        return false;
     }
 	
 	public void atualizarQuantidadeProduto(int idProduto, int quantidadeVendida) {
@@ -189,9 +182,10 @@ public class DaoItemVenda {
 	        ps.setInt(1, quantidadeVendida);
 	        ps.setInt(2, idProduto);
 	        ps.executeUpdate();
+
 	    } catch (SQLException ex) {
 	        ex.printStackTrace();
-	    }
+			}
 	}
 	
 	public void atualizarItemDaVenda(int idProduto, int quantidadeVendida) {
@@ -205,5 +199,4 @@ public class DaoItemVenda {
 	        ex.printStackTrace();
 	    }
 	}
-	
 }

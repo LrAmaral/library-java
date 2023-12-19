@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ifsp.edu.source.Model.Venda;
-import ifsp.edu.source.Model.Compra;
 import ifsp.edu.source.Model.Livro;
 
 public class DaoVenda {
@@ -35,10 +34,8 @@ public int incluir(Venda v) {
     } catch (SQLException ex) {
         ex.printStackTrace();
     }
-    return -1; // Retorne um valor adequado se não for possível obter o último id inserido
+    return -1;
 }	
-
-
 
 
 	public boolean alterar(Venda v) {
@@ -115,7 +112,7 @@ public int incluir(Venda v) {
 	    } catch (SQLException ex) {
 	        ex.printStackTrace();
 	    }
-	    return -1; // Retorne um valor adequado se não for possível obter o último id inserido
+	    return -1;
 	}
 
 	
@@ -129,7 +126,6 @@ public int incluir(Venda v) {
 	            venda.setId_cliente(rs.getInt("id_cliente"));
 	            venda.setData(rs.getString("data"));
 	            
-	            // Obtendo a lista de produtos associados a esta compra
 	            List<Livro> listaLivro = obterListaProdutosPorCompra(venda.getId());
 	            venda.setListaLivro(listaLivro);
 

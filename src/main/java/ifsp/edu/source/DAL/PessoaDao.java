@@ -10,8 +10,6 @@ import ifsp.edu.source.Model.Livro;
 import ifsp.edu.source.Model.Pessoa;
 
 public class PessoaDao {
-	
-	
 	public boolean incluir(Pessoa v) {
 		DataBaseCom.conectar();
 

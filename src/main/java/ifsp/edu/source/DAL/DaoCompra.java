@@ -73,7 +73,6 @@ public class DaoCompra {
 	    String sqlString = "INSERT INTO compra (data) VALUES (?)";
 	    try {
 	        PreparedStatement ps = DataBaseCom.getConnection().prepareStatement(sqlString);
-	        //ps.setInt(1, v.getId_cliente());
 	        ps.setString(1, v.getData());
 
 	        int rowsAffected = ps.executeUpdate();
@@ -115,12 +114,12 @@ public class DaoCompra {
 		DataBaseCom.conectar();
 		Compra p = null;
 		try {
-			ResultSet rs = DataBaseCom.getStatement().executeQuery("select * from compra where id=" + id);
+			ResultSet rs = DataBaseCom.getStatement().executeQuery("select id, data from compra where id=" + id);
 			while (rs.next()) {
 				p = new Compra();
 				p.setId(rs.getInt("id"));
 				List<Livro> listaLivro = obterListaProdutosPorCompra(p.getId());
-		        p.setListaLivro(listaLivro);
+		    p.setListaLivro(listaLivro);
 				p.setData(rs.getString("data"));
 			}
 		} catch (Exception e) {
@@ -168,7 +167,7 @@ public class DaoCompra {
 	public List<Compra> listar() {
 	    List<Compra> lista = new ArrayList<>();
 	    try {
-	        ResultSet rs = DataBaseCom.getStatement().executeQuery("SELECT * FROM compra");
+	        ResultSet rs = DataBaseCom.getStatement().executeQuery("SELECT id, data FROM compra");
 	        while (rs.next()) {
 	            Compra compra = new Compra();
 	            compra.setId(rs.getInt("id"));

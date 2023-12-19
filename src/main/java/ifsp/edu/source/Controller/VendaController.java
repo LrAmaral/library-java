@@ -51,13 +51,11 @@ public class VendaController {
 	    int id_venda = cadVendas.obterUltimoIdInserido();
 
 	    for (Livro livro : venda.getListaLivro()) {
-	        // Verifica se o livro existe na tabela produto
 	        if (cadItemVenda.verificarExistenciaLivro(livro.getId())) {
 	            cadItemVenda.incluir(livro, id_venda, livro.getQuantidade());
 	            
 	            
 	        } else {
-	            // Livro não encontrado na tabela produto, trate conforme necessário
 	            System.out.println("Livro não encontrado na tabela produto: " + livro.getNome());
 	        }
 	        
@@ -67,8 +65,6 @@ public class VendaController {
 	        cadItemVenda.atualizarQuantidadeProduto(livro.getId(), livro.getQuantidade());
 	    }
 	    
-	    
-	    //cadItemVenda.atualizarQuantidadeProduto(livro.getId(), livro.getQuantidade());
 	    return "Venda Cadastrada";
 	}
 
@@ -78,7 +74,7 @@ public class VendaController {
 		
 		for (Livro livro : newVenda.getListaLivro()) {
 	        cadItemVenda.atualizarItemDaVenda(livro.getId(), livro.getQuantidade());
-	    }
+	  }
 		
 		return "Venda atualizado";
 	}

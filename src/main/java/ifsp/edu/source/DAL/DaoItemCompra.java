@@ -11,27 +11,6 @@ import ifsp.edu.source.Model.Livro;
 
 public class DaoItemCompra {
 
-	
-	/*public boolean incluir(Livro livro, int id_compra) {
-	    DataBaseCom.conectar();
-
-	    String sqlString = "INSERT INTO item_compra (id_compra, id_produto) VALUES (?, ?)";
-	    try {
-	        PreparedStatement ps = DataBaseCom.getConnection().prepareStatement(sqlString);
-	        ps.setInt(1, id_compra);
-	        ps.setInt(2, livro.getId());
-
-	        int rowsAffected = ps.executeUpdate();
-	        
-	        // Verifique se alguma linha foi afetada (inserida)
-	        return rowsAffected > 0;
-
-	    } catch (SQLException ex) {
-	        ex.printStackTrace();
-	    }
-	    return false;
-	}*/
-	
 	public boolean incluir(Livro livro, int id_compra, int quantidade) {
 	    DataBaseCom.conectar();
 
@@ -42,23 +21,14 @@ public class DaoItemCompra {
 	        ps.setInt(2, livro.getId());
 	        ps.setInt(3, quantidade);
 	        
-
 	        int rowsAffected = ps.executeUpdate();
-	        
-	        
-	        
-	        // Verifique se alguma linha foi afetada (inserida)
 	        return rowsAffected > 0;
-	        
-	        
 
 	    } catch (SQLException ex) {
 	        ex.printStackTrace();
 	    }
 	    return false;
 	}
-
-
 	
 	public boolean incluir(ItemCompra v, int id_compra) {
 		DataBaseCom.conectar();
@@ -72,8 +42,8 @@ public class DaoItemCompra {
 
 			
 			//System.out.println("======================"+v.getQuantidade());
-            boolean ri=ps.execute(); 
-            return ri;
+      boolean ri=ps.execute(); 
+      return ri;
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -93,8 +63,8 @@ public class DaoItemCompra {
 
 			
 			//System.out.println("======================"+v.getQuantidade());
-            boolean ri=ps.execute(); 
-            return ri;
+      boolean ri=ps.execute(); 
+      return ri;
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -164,7 +134,6 @@ public class DaoItemCompra {
 		}
 		return false;
 	}
-
 	
 	public List<ItemCompra> listar() {
 		List<ItemCompra> lista = new ArrayList<>();
@@ -185,7 +154,6 @@ public class DaoItemCompra {
 		return lista;
 	}
 
-	
 	public boolean verificarExistenciaLivro(int idLivro) {
         try {
             String sql = "SELECT COUNT(*) FROM produto WHERE id = ?";
@@ -217,7 +185,7 @@ public class DaoItemCompra {
 	
 	public void atualizarItemDaCompra(int idProduto, int quantidadeVendida) {
 	    try {
-	        String sql = "UPDATE item_venda SET qtde_item = ? WHERE id = ?";
+	        String sql = "UPDATE item_compra SET qtde_item = ? WHERE id = ?";
 	        PreparedStatement ps = DataBaseCom.getConnection().prepareStatement(sql);
 	        ps.setInt(1, quantidadeVendida);
 	        ps.setInt(2, idProduto);

@@ -77,7 +77,7 @@ public class CompraController {
 		
 		for (Livro livro : newCompra.getListaLivro()) {
 	        cadItemCompra.atualizarItemDaCompra(livro.getId(), livro.getQuantidade());
-	    }
+	  }
 		
 		return "Compra atualizada";
 	}
@@ -86,6 +86,5 @@ public class CompraController {
 	public String Delete(@PathVariable(value = "id") long id) {
 		cadCompras.excluir(id);
 		return "Exclusão realizada";
-
 	}
 }
